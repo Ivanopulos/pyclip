@@ -1,6 +1,13 @@
 import pyperclip
 import re
 
+m = pyperclip.paste()
+m=re.sub(r"(Page 1'![ABD]\d{1,2})", r'\1"', m)
+m=re.sub(r"(?<!&)N7", '=N7', m)
+m=re.sub(r"&N7", '&"&"&N7', m)
+print(m)
+pyperclip.copy(m)
+
 фыв="ре серч скобок"
 # m = pyperclip.paste()  # коллекция для фигур хтмл
 # a="gfsgdg4gfsdfg54g"
