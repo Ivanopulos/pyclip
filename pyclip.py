@@ -1,7 +1,43 @@
 import pyperclip
 import re
 import pandas as pd
-
+asd = "игра в слова, статистика началоконцов"
+# from collections import Counter
+#
+# # Ваш исходный код
+# m = pyperclip.paste()
+# m = re.sub(r'[ьъы]', r'', m)
+# m = re.sub(r'[й]', r'и', m)
+# words = m.splitlines()
+# letters_dict = {chr(i): {'start': 0, 'end': 0, 'end_letters': Counter()} for i in range(ord('а'), ord('я')+1)}
+# letters_dict['ё'] = {'start': 0, 'end': 0, 'end_letters': Counter()}
+#
+# for word in words:
+#     if word:
+#         letters_dict[word[0]]['start'] += 1
+#         letters_dict[word[-1]]['end'] += 1
+#         letters_dict[word[0]]['end_letters'][word[-1]] += 1
+#
+# # Создаем датафрейм
+# df = pd.DataFrame({k: {'start': v['start'], 'end': v['end'], 'top3': v['end_letters'].most_common(3)} for k, v in letters_dict.items()}).T
+# df['start'] = df['start'].replace(0, 1e-10)
+# df['ratio'] = df['end'] / df['start']
+# df['dif'] = df['end'] - df['start']
+#
+# # Создаем отдельные столбцы для самых распространенных конечных букв и их количества
+# df[['top1_letter', 'top1_count']] = df['top3'].apply(lambda x: x[0] if x else ('N/A', 0)).tolist()
+# df[['top2_letter', 'top2_count']] = df['top3'].apply(lambda x: x[1] if len(x) > 1 else ('N/A', 0)).tolist()
+# df[['top3_letter', 'top3_count']] = df['top3'].apply(lambda x: x[2] if len(x) > 2 else ('N/A', 0)).tolist()
+#
+# df.drop(columns='top3', inplace=True)  # Удаляем столбец 'top3', так как теперь у нас есть отдельные столбцы для этой информации
+#
+# # Сортируем по столбцу 'dif' и выводим результат
+# df = df.sort_values('dif', ascending=False)
+# pd.set_option('display.max_columns', None)
+# pd.set_option('display.expand_frame_repr', False)
+# pd.options.display.float_format = None
+# pd.options.display.float_format = '{:.0f}'.format
+# print(df)
 asd = "игра в слова, окончания"
 # m = pyperclip.paste()
 # m = re.sub(r'[ьъы]', r'', m)
@@ -27,18 +63,18 @@ asd = "игра в слова, окончания"
 # # возврат отсортированного DataFrame
 # print(df)
 asd = "подсчет тгсервиса"
-# m = pyperclip.paste()
-# m = m + "\r\n"  # иначе не ест последнее значение
-# print(m)
-# n = re.findall(r'(-?)(\d+)(?=[^\*]*\r)', m)
-# c = 0
-# print(n)
-# for a, b in n:
-#     c = c+int(a+b)
-#     if a == "":
-#         a = "+"
-#     print(a + b)
-# print("Итого: "+str(c)+"/2="+str(c/2)+" к перечислению, высылаю")
+m = pyperclip.paste()
+m = m + "\r\n"  # иначе не ест последнее значение
+print(m)
+n = re.findall(r'(-?)(\d+)(?=[^\*]*\r)', m)
+c = 0
+print(n)
+for a, b in n:
+    c = c+int(a+b)
+    if a == "":
+        a = "+"
+    print(a + b)
+print("Итого: "+str(c)+"/2="+str(c/2)+" к перечислению, высылаю")
 asd = "слова на а"
 # m = pyperclip.paste()
 # n = re.findall(r'^а\w+а:', m, flags=re.MULTILINE)
