@@ -62,19 +62,47 @@ asd = "игра в слова, окончания"
 # df = df.sort_values('dif', ascending=False)
 # # возврат отсортированного DataFrame
 # print(df)
-asd = "подсчет тгсервиса"
+asd = "подсчет тгсервиса 'остальное'"#/не видит дроби и пробелы***
 m = pyperclip.paste()
 m = m + "\r\n"  # иначе не ест последнее значение
 print(m)
 n = re.findall(r'(-?)(\d+)(?=[^\*]*\r)', m)
+n1 = re.findall(r'(-?)(\d+)(?=\*\*\*)', m)
 c = 0
-print(n)
+c1 = 0
+print(n, n1)
+print("Общие расходы:")
 for a, b in n:
     c = c+int(a+b)
     if a == "":
         a = "+"
     print(a + b)
-print("Итого: "+str(c)+"/2="+str(c/2)+" к перечислению, высылаю")
+print("Отдельные перечисления:")
+for a, b in n1:
+    c1 = c1 + int(a + b)
+    if a == "":
+        a = "+"
+    print(a + b, "***")
+cs = ""
+if c1 > 0:
+    cs="+"
+print("Итого: "+str(c)+"/2" + cs + str(c1) + "="+str(int(c/2+c1))+"***")
+asd = "подсчет тгсервиса 'расчеты'"
+# m = pyperclip.paste()
+# print(m)
+# m = m + "\r\n"  # иначе не ест последнее значение
+# m = re.sub(r'(\d+) (\d+)', r'\1\2', m)
+# print(m)
+# n = re.findall(r'= ?([-+])(\d+)', m)
+# n1 = re.findall(r'итого (\d+)', m)
+# n2 = int(n1[0])
+# print(n, n1, n2)
+# print("Предыдущий итог:", re.sub(r'(\d{3})$', r' \1', str(n2)))
+# for a, b in n:
+#     n2 = n2 + int(a + b)
+#     print(a+re.sub(r'(\d{3})$', r' \1', str(b)), "(промежуточный итог:", re.sub(r'(\d{3})$', r' \1', str(n2)) + ")")
+# n3=re.sub(r'(\d{3})$', r' \1', str(n2))
+# print("итого", n3)
 asd = "слова на а"
 # m = pyperclip.paste()
 # n = re.findall(r'^а\w+а:', m, flags=re.MULTILINE)
