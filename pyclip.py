@@ -63,37 +63,38 @@ asd = "игра в слова, окончания"
 # # возврат отсортированного DataFrame
 # print(df)
 asd = "подсчет тгсервиса 'остальное'"#/не видит дроби и пробелы***
-# m = pyperclip.paste()
-# m = m + "\r\n"  # иначе не ест последнее значение
-# print(m)
-# n = re.findall(r'(-?)(\d+)(?=[^\*]*\r)', m)
-# n1 = re.findall(r'(-?)(\d+)(?=\*\*\*)', m)
-# c = 0
-# c1 = 0
-# print(n, n1)
-# print("Общие расходы:")
-# for a, b in n:
-#     c = c+int(a+b)
-#     if a == "":
-#         a = "+"
-#     print(a + b)
-# print("Отдельные перечисления:")
-# for a, b in n1:
-#     c1 = c1 + int(a + b)
-#     if a == "":
-#         a = "+"
-#     print(a + b, "***")
-# cs = ""
-# if c1 > 0:
-#     cs="+"
-# print("Итого: "+str(c)+"/2" + cs + str(c1) + "="+str(int(c/2+c1))+"***")
+m = pyperclip.paste()
+m = m + "\r\n"  # иначе не ест последнее значение
+print(m)
+n = re.findall(r'(-?)(\d+)(?=[^\*]*\r)', m)
+n1 = re.findall(r'(-?)(\d+)(?=\*\*\*)', m)
+c = 0
+c1 = 0
+print(n, n1)
+print("Общие расходы:")
+for a, b in n:
+    c = c+int(a+b)
+    if a == "":
+        a = "+"
+    print(a + b)
+print("Отдельные перечисления:")
+for a, b in n1:
+    c1 = c1 + int(a + b)
+    if a == "":
+        a = "+"
+    print(a + b, "***")
+cs = ""
+if c1 > 0:
+    cs="+"
+print("Итого: "+str(c)+"/2" + cs + str(c1) + "="+str(int(c/2+c1))+"***")
 asd = "подсчет тгсервиса 'расчеты'"
 # m = pyperclip.paste()
 # print(m)
 # m = m + "\r\n"  # иначе не ест последнее значение
 # m = re.sub(r'(\d+) (\d+)', r'\1\2', m)
+# m = re.sub(r'(= ?)(\d+)', r"\1+\2", m)
 # print(m)
-# n = re.findall(r'= ?([-+])(\d+)', m)
+# n = re.findall(r'(?<!gid)= ?([-+])(\d+)', m)
 # n1 = re.findall(r'итого (\d+)', m)
 # n2 = int(n1[0])
 # print(n, n1, n2)
@@ -101,7 +102,7 @@ asd = "подсчет тгсервиса 'расчеты'"
 # for a, b in n:
 #     n2 = n2 + int(a + b)
 #     print(a+re.sub(r'(\d{3})$', r' \1', str(b)), "(промежуточный итог:", re.sub(r'(\d{3})$', r' \1', str(n2)) + ")")
-# n3=re.sub(r'(\d{3})$', r' \1', str(n2))
+# n3 = re.sub(r'(\d{3})$', r' \1', str(n2))
 # print("итого", n3)
 asd = "слова на а"
 # m = pyperclip.paste()
@@ -173,14 +174,16 @@ asd = "пересортировка листа файлов на нетекст�
 #     i = max(i+1, 0)
 # print(a)
 asd = "расковыр руспрофиль по мз"
-m = pyperclip.paste()
-n = re.findall(r'(itemprop=""legalName"">)([^<]+)(.+?)(<span itemprop=""postalCode"">)(\d{6})(.+?)(<span itemprop=""address[LR][oe][cg][ai][lo][in][t]?[y]?"">)(.+?)(</span>)(, )(<span itemprop=""streetAddress"">)([^<]+)(.+?)(</span> <span class=""chief-title"">)([^<]+)(.+?)(<span.+?>)([^<]+)', m)
-print(n)
-data = []
-for m5, g, m6, m4, f, m3, m8, a, m1, m10, m2, e, m7, m9, h, m11, m12, j in n:
-    a = a.replace('</span>, <span itemprop=""addressLocality"">', ', ')
-    e = e.replace('&quot;', "")
-    print(g+"\t"+h+"\t"+j+"\t"+f+", "+a+", "+e)
+# m = pyperclip.paste()
+# n = re.findall(r'(itemprop=""legalName"">)([^<]+)(.+?)(<span itemprop=""postalCode"">)(\d{6})(.+?)(<span itemprop=""address[LR][oe][cg][ai][lo][in][t]?[y]?"">)(.+?)(</span>)(, )(<span itemprop=""streetAddress"">)([^<]+)(.+?)(</span> <span class=""chief-title"">)([^<]+)(.+?)(<span.+?>)([^<]+)', m)
+# print(n)
+# data = []
+# for m5, g, m6, m4, f, m3, m8, a, m1, m10, m2, e, m7, m9, h, m11, m12, j in n:
+#     a = a.replace('</span>, <span itemprop=""addressLocality"">', ', ')
+#     e = e.replace('&quot;', "")
+#     print(g+"\t"+h+"\t"+j+"\t"+f+", "+a+", "+e)
+
+
     #row = [g, h, j, f, a, e]
     #data.append(row)
 #df = pd.DataFrame(data)
