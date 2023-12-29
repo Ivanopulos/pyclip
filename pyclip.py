@@ -63,47 +63,47 @@ asd = "игра в слова, окончания"
 # # возврат отсортированного DataFrame
 # print(df)
 asd = "подсчет тгсервиса 'остальное'"#/не видит дроби и пробелы***
-m = pyperclip.paste()
-m = m + "\r\n"  # иначе не ест последнее значение
-print(m)
-n = re.findall(r'(-?)(\d+)(?=[^\*]*\r)', m)
-n1 = re.findall(r'(-?)(\d+)(?=\*\*\*)', m)
-c = 0
-c1 = 0
-print(n, n1)
-print("Общие расходы:")
-for a, b in n:
-    c = c+int(a+b)
-    if a == "":
-        a = "+"
-    print(a + b)
-print("Отдельные перечисления:")
-for a, b in n1:
-    c1 = c1 + int(a + b)
-    if a == "":
-        a = "+"
-    print(a + b, "***")
-cs = ""
-if c1 > 0:
-    cs="+"
-print("Итого: "+str(c)+"/2" + cs + str(c1) + "="+str(int(c/2+c1))+"***")
-asd = "подсчет тгсервиса 'расчеты'"
 # m = pyperclip.paste()
-# print(m)
 # m = m + "\r\n"  # иначе не ест последнее значение
-# m = re.sub(r'(\d+) (\d+)', r'\1\2', m)
-# m = re.sub(r'(= ?)(\d+)', r"\1+\2", m)
 # print(m)
-# n = re.findall(r'(?<!gid)= ?([-+])(\d+)', m)
-# n1 = re.findall(r'итого (\d+)', m)
-# n2 = int(n1[0])
-# print(n, n1, n2)
-# print("Предыдущий итог:", re.sub(r'(\d{3})$', r' \1', str(n2)))
+# n = re.findall(r'(-?)(\d+)(?=[^\*]*\r)', m)
+# n1 = re.findall(r'(-?)(\d+)(?=\*\*\*)', m)
+# c = 0
+# c1 = 0
+# print(n, n1)
+# print("Общие расходы:")
 # for a, b in n:
-#     n2 = n2 + int(a + b)
-#     print(a+re.sub(r'(\d{3})$', r' \1', str(b)), "(промежуточный итог:", re.sub(r'(\d{3})$', r' \1', str(n2)) + ")")
-# n3 = re.sub(r'(\d{3})$', r' \1', str(n2))
-# print("итого", n3)
+#     c = c+int(a+b)
+#     if a == "":
+#         a = "+"
+#     print(a + b)
+# print("Отдельные перечисления:")
+# for a, b in n1:
+#     c1 = c1 + int(a + b)
+#     if a == "":
+#         a = "+"
+#     print(a + b, "***")
+# cs = ""
+# if c1 > 0:
+#     cs="+"
+# print("Итого: "+str(c)+"/2" + cs + str(c1) + "="+str(int(c/2+c1))+"***")
+asd = "подсчет тгсервиса 'расчеты'"
+m = pyperclip.paste()
+print(m)
+m = m + "\r\n"  # иначе не ест последнее значение
+m = re.sub(r'(\d+)\s(\d+)', r'\1\2', m)
+m = re.sub(r'(= ?)(\d+)', r"\1+\2", m)
+print(m)
+n = re.findall(r'(?<!gid)= ?([-+])(\d+)', m)
+n1 = re.findall(r'итого\s\+?(\d+ ?\d+)', m)
+n2 = int(n1[0])
+print(n, n1, n2)
+print("Предыдущий итог:", re.sub(r'(\d{3})$', r' \1', str(n2)))
+for a, b in n:
+    n2 = n2 + int(a + b)
+    print(a+re.sub(r'(\d{3})$', r' \1', str(b)), "(промежуточный итог:", re.sub(r'(\d{3})$', r' \1', str(n2)) + ")")
+n3 = re.sub(r'(\d{3})$', r' \1', str(n2))
+print("итого", n3)
 asd = "слова на а"
 # m = pyperclip.paste()
 # n = re.findall(r'^а\w+а:', m, flags=re.MULTILINE)
@@ -125,8 +125,7 @@ asd = "слова на а"
 # #            начало                # после базовой скобки
 # #                   до 10 не[();]        # найди финальную внутр скобку
 # print(m) #
-asd = "отковыривание из условий гугла"
-# n = re.findall(r'".*?"', m)
+asd = "отковыривание из условий гугла" # n = re.findall(r'".*?"', m)
 asd = "удаление лишней формулы из 6700"
 # m = pyperclip.paste()
 # m = re.sub(r"(?<!\))+\n.+\$[BC][A-Z]8(.+\n){3}\s+\.build\(\),", '', m)
@@ -188,4 +187,49 @@ asd = "расковыр руспрофиль по мз"
     #data.append(row)
 #df = pd.DataFrame(data)
 #df.to_clipboard(index=False, header=False)
+asd = "единицы измерения"
+# units_var = pyperclip.paste()
+# # адаптация пайклип к цсв
+# units_var = re.sub(r';?\r\n;?', ';\r\n;', units_var)
+# # обобщённые
+# units_var = re.sub(r'\bтыс(яч)?(ах)?\b[ \.,)(]*(\w+)', r'тысъъ\3', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'\bмлн\b[ \.,)(]*(\w+)', r'млнъъ\1', units_var, flags=re.IGNORECASE)
+#
+# # очевидные по шаблону комментария
+# units_var = re.sub(r'[^;]*процент[аоы]?[вх]?[^;]{,7}([;\.])', r'процент\1', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*лет[^;]{,7}([;\.])', r'лет\1', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*\b(\w*)человек[^;]{,7}[;\.]', r'\1человек;', units_var, flags=re.IGNORECASE)  # 'ъ' отсылка к разделителю
+#
+# units_var = re.sub(r'[^;]*\b(\w*)руб[л\.][еь]?[й]?[^;]{,7}[;\.]', r'\1руб;', units_var, flags=re.IGNORECASE)  # 'ъ' отсылка к разделителю
+# units_var = re.sub(r'[^;]*\b(\w*)штук[^;]{,20}[;\.]', r'\1штук;', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*цена[х]?[^;]{,7}[;\.]', r'руб;', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*\b(\w*)км\b[^;]{,7}[;\.]', r'\1км;', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*\bбалл[а]?[х]?\b[^;]{,40}[;\.]', r'балл;', units_var, flags=re.IGNORECASE)  # по прецеденту 12
+# units_var = re.sub(r'[^;]*\b(\w*)семей[^;]{,7}[;\.]', r'\1семей;', units_var, flags=re.IGNORECASE)
+#
+# # ориентирующие по вхождению в текст
+# units_var = re.sub(r'[^;]*числен[^;]*', r'человек', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*количество[^;]*граждан[^;]*', r'человек', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*число посещений[^;]*', r'единиц', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*число[^;]*ших[^;]*', r'человек', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*доля[^;]*', r'процент', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*процент[^;]*', r'процент', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*уровень[^;]*', r'процент', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*часть[^;]*', r'процент', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*коэффициент[^;]*', r'процент', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*количество[^;]*месяц[^;]*', r'месяцев', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*протяженность[^;]*', r'км', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*количество[^;]*?[лд]ей[^;]*', r'человек', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*количество[^;]*?щиков[^;]*', r'человек', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*индекс[^;]*', r'процент', units_var, flags=re.IGNORECASE)
+# units_var = re.sub(r'[^;]*(?!за )отчетный период[^;]*', r'№ года', units_var, flags=re.IGNORECASE)
+#
+# # финишный разделитель
+# units_var = re.sub(r'ъъ', r' ', units_var)
+# # затирка не найденых
+# units_var = re.sub(r'[^;]*- ', r'', units_var)
+#
+#
+# units_var = re.sub(r';\r\n;', r'\r\n', units_var)
+# pyperclip.copy(units_var)
 
