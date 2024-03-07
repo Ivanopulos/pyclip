@@ -1,6 +1,15 @@
 import pyperclip
 import re
 import pandas as pd
+asd = "обработка для эксельки например заглав"
+# m = pyperclip.paste()
+# #m = re.sub(r'(\w)(\w+)', lambda m: m.group(1).upper() + m.group(2).lower(), m)
+# #result = re.sub(r'(\w)(\w*)\s*', lambda m: m.group(1).upper() + m.group(2) + ' ', text)
+# m = re.sub(r'(\d+)/(\d+)', r'Идентификатор ФП: \1, Идентификатор НП : \2', m)
+# m = m.replace('\r\n', '\n')
+# m = re.sub(r'^(\d+)$', r'Идентификатор ФП: \1', m, flags=re.MULTILINE)
+# print(m)
+# pyperclip.copy(m)
 asd = "игра в слова, статистика началоконцов"
 # from collections import Counter
 #
@@ -87,30 +96,30 @@ asd = "подсчет тгсервиса 'остальное'"#/не видит 
 # if c1 > 0:
 #     cs="+"
 # print("Итого: "+str(c)+"/2" + cs + str(c1) + "="+str(int(c/2+c1))+"***")
-asd = "подсчет тгсервиса 'расчеты'"
-m = pyperclip.paste()
-print(m)
-m = m + "\r\n"  # иначе не ест последнее значение
-m = re.sub(r'(\d+)\s(\d+)', r'\1\2', m)
-m = re.sub(r'(= ?)(\d+)', r"\1+\2", m)
-print(m)
-n = re.findall(r'(?<!gid)= ?([-+])(\d+)', m)
-n1 = re.findall(r'итого\s\+?(\d+ ?\d+)', m)
-n2 = int(n1[0])
-print(n, n1, n2)
-print("Предыдущий итог:", re.sub(r'(\d{3})$', r' \1', str(n2)))
-for a, b in n:
-    n2 = n2 + int(a + b)
-    print(a+re.sub(r'(\d{3})$', r' \1', str(b)), "(промежуточный итог:", re.sub(r'(\d{3})$', r' \1', str(n2)) + ")")
-n3 = re.sub(r'(\d{3})$', r' \1', str(n2))
-print("итого", n3)
-asd = "слова на а"
+asd = "подсчет тгсервиса 'расчеты'"# предкопирование в документ должно быть ибо последнее сообщение не цепляет
+# m = pyperclip.paste()
+# print(m)
+# m = m + "\r\n"  # иначе не ест последнее значение
+# m = re.sub(r'(\d+)\s(\d+)', r'\1\2', m)
+# m = re.sub(r'(= ?)(\d+)', r"\1+\2", m)
+# print(m)
+# n = re.findall(r'(?<!gid)= ?([-+])(\d+)', m)
+# n1 = re.findall(r'итого\s\+?(\d+ ?\d*)', m)
+# n2 = int(n1[0])
+# print(n, n1, n2)
+# print("Предыдущий итог:", re.sub(r'(\d{3})$', r' \1', str(n2)))
+# for a, b in n:
+#     n2 = n2 + int(a + b)
+#     print(a+re.sub(r'(\d{3})$', r' \1', str(b)), "(промежуточный итог:", re.sub(r'(\d{3})$', r' \1', str(n2)) + ")")
+# n3 = re.sub(r'(\d{3})$', r' \1', str(n2))
+# print("итого", n3)
+# asd = "слова на а"
 # m = pyperclip.paste()
 # n = re.findall(r'^а\w+а:', m, flags=re.MULTILINE)
 # print(n)
 # for b in n:
 #     print(b[:-1])
-# asd = "псеврекурсивное удаление скобок"
+asd = "псеврекурсивное удаление скобок"
 # m = pyperclip.paste()
 # mlen = len(m)
 # mlen1 = 99999999999
@@ -121,11 +130,18 @@ asd = "слова на а"
 # m = re.sub(r'(ЕСЛИ\()[^\(\);]{1,10}\([^)]*?\)', r'\1', m)
 # m = re.sub(r' "";', r'', m)
 # m = re.sub(r'" & ";', r'', m)
-#
-# #            начало                # после базовой скобки
-# #                   до 10 не[();]        # найди финальную внутр скобку
+
+#            начало                # после базовой скобки
+#                   до 10 не[();]        # найди финальную внутр скобку
 # print(m) #
-asd = "отковыривание из условий гугла" # n = re.findall(r'".*?"', m)
+asd = "файндал и соед в строку"
+# m = pyperclip.paste()
+# n = re.findall(r'\d{7,},\w*\r', m)
+# nn = ""
+# for a in n:
+#     nn = nn + a + '\n'
+# pyperclip.copy(nn)
+# print(nn)
 asd = "удаление лишней формулы из 6700"
 # m = pyperclip.paste()
 # m = re.sub(r"(?<!\))+\n.+\$[BC][A-Z]8(.+\n){3}\s+\.build\(\),", '', m)
