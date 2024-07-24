@@ -1,13 +1,26 @@
 import pyperclip
 import re
 import pandas as pd
+asd = "еще разряды"
+# m = pyperclip.paste()
+# m = re.sub(r'\B(?=(\d{3})+(?!\d))', ' ', m)
+# print(m)
+asd = "файндал ссылок"
+# m = pyperclip.paste()
+# n = re.findall(r"http://docs\.cntd\.ru/document/[^']+", m)
+# nn = ""
+# for a in n:
+#     nn = nn + a + '\n'
+# pyperclip.copy(nn)
+# print(nn)
 asd = "обработка для эксельки например заглав"
 # m = pyperclip.paste()
 # #m = re.sub(r'(\w)(\w+)', lambda m: m.group(1).upper() + m.group(2).lower(), m)
 # #result = re.sub(r'(\w)(\w*)\s*', lambda m: m.group(1).upper() + m.group(2) + ' ', text)
-# m = re.sub(r'(\d+)/(\d+)', r'Идентификатор ФП: \1, Идентификатор НП : \2', m)
+# m = re.sub(r'^\d+[^ ]\s', r'', m, flags=re.MULTILINE)
+# m = re.sub(r'^[\d\.]+\s?\b', r'', m, flags=re.MULTILINE)
+# m = re.sub(r'^\s', r'', m, flags=re.MULTILINE)
 # m = m.replace('\r\n', '\n')
-# m = re.sub(r'^(\d+)$', r'Идентификатор ФП: \1', m, flags=re.MULTILINE)
 # print(m)
 # pyperclip.copy(m)
 asd = "игра в слова, статистика началоконцов"
@@ -72,30 +85,41 @@ asd = "игра в слова, окончания"
 # # возврат отсортированного DataFrame
 # print(df)
 asd = "подсчет тгсервиса 'остальное'"#/не видит дроби и пробелы***
-# m = pyperclip.paste()
-# m = m + "\r\n"  # иначе не ест последнее значение
-# print(m)
-# n = re.findall(r'(-?)(\d+)(?=[^\*]*\r)', m)
-# n1 = re.findall(r'(-?)(\d+)(?=\*\*\*)', m)
-# c = 0
-# c1 = 0
-# print(n, n1)
-# print("Общие расходы:")
-# for a, b in n:
-#     c = c+int(a+b)
-#     if a == "":
-#         a = "+"
-#     print(a + b)
-# print("Отдельные перечисления:")
-# for a, b in n1:
-#     c1 = c1 + int(a + b)
-#     if a == "":
-#         a = "+"
-#     print(a + b, "***")
-# cs = ""
-# if c1 > 0:
-#     cs="+"
-# print("Итого: "+str(c)+"/2" + cs + str(c1) + "="+str(int(c/2+c1))+"***")
+m = pyperclip.paste()
+m = m + "\r\n"  # иначе не ест последнее значение
+m = re.sub(r"(\d+)\s(\d+)", r"\1\2", m)
+print(m)
+n = re.findall(r'(-?)(\d+)(?=[^\*]*\r)', m)
+n1 = re.findall(r'(-?)(\d+)(?=\*\*\*)', m)
+c = 0
+c1 = 0
+print(n1, n)
+fi = True  # метка первого использования
+for a, b in n1:
+    c1 = c1 + int(a + b)
+    if a == "":
+        a = "+"
+    if fi:
+        print("Предыдущий итог:")
+        print(a + b)
+        print("Отдельные перечисления:")
+        fi = False
+    else:
+        print(a + b, "*** итого: ", re.sub(r"(\d)(\d{3})+$", r"\1 \2", str(c1)))
+print("Общие расходы, это те которые пополам:")
+c2 = c1
+for a, b in n:
+    c = c+int(a+b)
+    c2 = c2+int(a+b)/2  # про общий итог
+    if a == "":
+        a = "+"
+    print(a + b, "/2   итого: ", re.sub(r"(\d)(\d{3})+(\.0)?(\.5)?$", r"\1 \2", str(c2)))
+cs = ""
+if c1 > 0:
+    cs="+"
+print("Из них совместных рсходов: " + str(c) + "/2 =", str(c/2))
+print("Отдельных перечислений: ", cs + str(c1))
+print("Общий итог: ", str(int(c/2+c1))+"*** \n\"+\" означает что должен иван, \"-\" наоборот", )
 asd = "подсчет тгсервиса 'расчеты'"# предкопирование в документ должно быть ибо последнее сообщение не цепляет
 # m = pyperclip.paste()
 # print(m)
